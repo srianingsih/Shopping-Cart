@@ -1,0 +1,44 @@
+{{template "partials/header" .}}
+
+<h1>Our Products</h1>
+<br>
+<a href="/products/create" class="btn btn-primary">Add Product</a>
+<div>
+	<table class="table table-striped">
+		<thead>
+		  <tr>
+			<th scope="col">No.</th>
+			<th scope="col">Product</th>
+			<th scope="col">Image</th>
+			<th scope="col">Description</th>
+			<th scope="col">Quantity</th>
+			<th scope="col">Price</th>
+			<th scope="col">Actions</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{{range .Products}}
+			<tr>
+				<th scope="row">{{.Id}}</th>
+				<td>{{.Name}}</td>
+				<td><img class="rounded mx-auto d-block " src="..\public\images\{{.Image}}" height="100" width="100" alt=""></td>
+				<td>{{.Deskripsi}}</td>
+				<td>{{.Quantity}}</td>
+				<td>{{.Price}}</td>
+				<td>
+					<a href="/products/productdetail?id={{.Id}}" class="btn btn-outline-info">
+						Detail</a>
+					&nbsp;
+					<a href="/carts/addcart/{{.Id}}" class="btn btn-outline-info">
+						Checkout</a>
+					<!--<a href="/products/detail/{{.Id}}" class="btn btn-outline-info">
+							Detail 2</a>-->
+				</td>
+			</tr>
+		  {{end}}
+		  
+		</tbody>
+	  </table>
+</div>
+
+{{template "partials/footer" .}}
